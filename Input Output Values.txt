@@ -1,0 +1,256 @@
+				Test 1
+
+
+
+				Input: 
+
+Server: How many clients?
+User: 3
+Server: What is the time quant?
+User: 4
+
+Client: How many processes do you want to do? Must be odd and max 5 allowed.
+User: 5
+Client: Please enter a number for the burst.
+User: 6
+Client: Please enter a number for the I/O.
+User: 10
+Client: Please enter a number for the burst.
+User: 6
+Client: Please enter a number for the I/O.
+User: 2
+Client: Please enter a number for the burst.
+User: 3
+
+Client: How many processes do you want to do? Must be odd and max 5 allowed.
+User: 5
+Client: Please enter a number for the burst.
+User: 2
+Client: Please enter a number for the I/O.
+User: 12
+Client: Please enter a number for the burst.
+User: 2
+Client: Please enter a number for the I/O.
+User: 5
+Client: Please enter a number for the burst.
+User: 4
+
+Client: How many processes do you want to do? Must be odd and max 5 allowed.
+User: 3
+Client: Please enter a number for the burst.
+User: 9
+Client: Please enter a number for the I/O.
+User: 6
+Client: Please enter a number for the burst.
+User: 4
+
+
+
+				
+
+
+		Output:
+
+ Traversing the queue:
+PCB name and CPU burst/IO:  First PCB 6 10 6 2 3
+PCB name and CPU burst/IO:  Second PCB 2 12 2 5 4
+PCB name and CPU burst/IO:  Third PCB 9 6 4 0 0
+
+-------------------------------------------------------------
+
+
+
+Clock = 6
+Ready Queue: PCB3, PCB1,
+Wait Queue: PCB2,
+
+
+Clock = 12
+Ready Queue: PCB3,
+Wait Queue: PCB2, PCB1,
+
+
+Clock = 17
+Ready Queue:
+Wait Queue: PCB2, PCB1, PCB3,
+
+
+Clock = 20
+Ready Queue:
+Wait Queue: PCB1, PCB3, PCB2,
+
+
+Clock = 34
+Ready Queue: PCB3,
+Wait Queue: PCB2, PCB1,
+
+
+Clock = 38
+Ready Queue:
+Wait Queue: PCB2, PCB1,
+
+
+Clock = 43
+Ready Queue: PCB1,
+Wait Queue:
+
+
+Clock = 46
+Ready Queue:
+Wait Queue:
+
+
+                                                                                   P3        P2    P1
+                                                                                   ^         ^     ^
+                                                                                   |         |     |
+Burst: | - - - | - | - - - | - | - - - | | | - |               | - - - - - | - - - | | - - - | - - |
+       P1      P2  P3      P1  P3      P3  P2                  P1                    P2      P1
+
+I/O:               | - - - - - - - - - - - | - - - - - - - - - | - - - - - | - - - - | - |
+                   P2                      P1                  P3          P2        P1
+Clock: 0         5         10        15        20        25        30        35        40        45
+
+
+Finish time for PCB 1: 46
+Server: Information sent to client 0
+
+
+Finish time for PCB 2: 43
+Server: Information sent to client 1
+
+
+Finish time for PCB 3: 38
+Server: Information sent to client 2
+CPU Utilization: 78.260870
+
+
+
+
+
+
+				Test 2
+
+
+
+
+				Input:
+
+Server: How many clients?
+User: 3
+Server: What is the time quant?
+User: 4
+
+Client: How many processes do you want to do? Must be odd and max 5 allowed.
+User: 5
+Client: Please enter a number for the burst.
+User: 6
+Client: Please enter a number for the I/O.
+User: 10
+Client: Please enter a number for the burst.
+User: 6
+Client: Please enter a number for the I/O.
+User: 2
+Client: Please enter a number for the burst.
+User: 3
+
+Client: How many processes do you want to do? Must be odd and max 5 allowed.
+User: 5
+Client: Please enter a number for the burst.
+User: 6
+Client: Please enter a number for the I/O.
+User: 12
+Client: Please enter a number for the burst.
+User: 2
+Client: Please enter a number for the I/O.
+User: 5
+Client: Please enter a number for the burst.
+User: 4
+
+Client: How many processes do you want to do? Must be odd and max 5 allowed.
+User: 3
+Client: Please enter a number for the burst.
+User: 8
+Client: Please enter a number for the I/O.
+User: 6
+Client: Please enter a number for the burst.
+User: 5
+
+
+
+				
+
+
+
+				Output:
+
+Traversing the queue:
+PCB name and CPU burst/IO:  First PCB 3 10 3 8 3
+PCB name and CPU burst/IO:  Second PCB 6 12 2 5 4
+PCB name and CPU burst/IO:  Third PCB 8 6 5 0 0
+
+-------------------------------------------------------------
+
+
+
+Clock = 3
+Ready Queue: PCB2, PCB3,
+Wait Queue: PCB1,
+
+
+Clock = 13
+Ready Queue: PCB3, PCB1,
+Wait Queue: PCB2,
+
+
+Clock = 17
+Ready Queue: PCB1,
+Wait Queue: PCB2, PCB3,
+
+
+Clock = 20
+Ready Queue:
+Wait Queue: PCB2, PCB3, PCB1,
+
+
+Clock = 27
+Ready Queue:
+Wait Queue: PCB3, PCB1, PCB2,
+
+
+Clock = 36
+Ready Queue:
+Wait Queue: PCB1, PCB2,
+
+
+Clock = 42
+Ready Queue:
+Wait Queue: PCB2,
+
+
+Clock = 48
+Ready Queue:
+Wait Queue:
+
+
+                                                                               P3          P1          P2
+                                                                               ^           ^           ^
+                                                                               |           |           |
+Burst: | - - | - - - | - - - | - | - - - | - - |         | - |       | | - - - |     | - | |   | - - | |
+       P1    P2      P3      P2  P3      P1              P2          P3P3            P1  P1    P2    P2
+
+I/O:         | - - - - - - - - - | - - - - - - - - - - - | - - - - - | - - - - - - - | - - - - |
+             P1                                          P3          P1              P2
+Clock: 0         5         10        15        20        25        30        35        40        45
+
+
+Finish time for PCB 1: 42
+Server: Information sent to client 0
+
+
+Finish time for PCB 2: 48
+Server: Information sent to client 1
+
+
+Finish time for PCB 3: 36
+Server: Information sent to client 2
+CPU Utilization: 70.833333
